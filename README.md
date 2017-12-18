@@ -1,23 +1,42 @@
-## 车牌组件
+## 车辆司机信息 组件
 #### Usage
 定位到 components 目录下，运行：
 ```
-npm --registry=http://<服务器IP:端口> install plate
+npm --registry=http://<服务器IP:端口> install carDriverInfo
 ```
 ### Example：
-车牌颜色小块+车牌号码
+默认
 ```
-<t-plate width="14px" height="14px" plateNumber="桂A123456" plateColor="2"></t-plate>
+<t-car-driver-info :data="cardriverData" ></t-car-driver-info>
+
+cardriverData: {
+    carData: {
+      carPic: 'http://www.sinaimg.cn/dy/slidenews/1_img/2017_50/88490_1557806_381226.jpg',
+      plateNumber: '桂A123456',
+      plateColor: '0',
+      alexNum: 4,
+      tyreNum: 8,
+      carType: '货5',
+      carWeight: '25(吨)',
+      loadWeight: '40(吨)'
+    },
+    driverData: {
+      driverPic: 'http://www.people.com.cn/mediafile/pic/20160226/26/1191985824992231422.jpg',
+      driverName: '王百万',
+      sex: '男',
+      drivingType: 'B2',
+      licenseDate: '2018-09-09',
+      licenseNumber: '423847293847509384',
+      birth: '1983-1-5',
+      idNumber: '45xxxxxxxxxxxxxxxx',
+      address: '广西壮族自治区南宁市高新区中盟科技园'
+    }
+  }
 
 ```
-车牌号码在颜色块内部
+指定宽度
 ```
-<t-plate width="200px" height="60px" plateNumber="桂A123456" plateColor="2" :inside="true"></t-plate>
-
-```
-无车牌号码
-```
-<t-plate width="20px" height="20px" plateColor="2"></t-plate>
+<t-car-driver-info :data="cardriverData" width=750px></t-car-driver-info>
 
 ```
 
@@ -25,13 +44,35 @@ npm --registry=http://<服务器IP:端口> install plate
 
 | 参数 | 说明       | 类型    | 可选值     | 默认值 |
 |------|------------|---------|------------|--------|
-| plateColor | 车牌颜色代码 | String  | 1/2/3/4/5         | --     |
-| plateNumber | 车牌号 | String | -- | --  |
-| inside | 车牌号显示位置，true为内部，仅在传入车牌时有效 | Bollean | true/false | false  |
-| width | 车牌块宽度 | String | -- | 0  |
-| height | 车牌块高度 | String | -- | 0  |
+| data | 车辆和司机信息 | Object  | --        | --     |
+| width | 宽度 | String | -- | --  |
 
 ### 说明
 
-> 车牌颜色块都有1px的边框，设定width和height时请注意减去边框
+data.carData 车辆信息字段:
+
+| 字段名           | 说明                                              |
+|------------------|---------------------------------------------------|
+| carPic       | 车身图片 |
+| plateNumber      | 车牌号码                                          |
+| plateColor       | 车牌颜色                                          |
+| alexNum        | 轴数                                      |
+| tyreNum      | 轮胎数                                      |
+| carType | 车辆类型                                      |
+| carWeight     | 车重                                      |
+| loadWeight     | 核载                                      |
+
+ data.driverData 司机信息字段:
+  
+  | 字段名           | 说明                                              |
+  |------------------|---------------------------------------------------|
+  | driverPic       | 司机图片 |
+  | driverName      | 司机姓名                                          |
+  | sex       | 性别                                          |
+  | drivingType        | 准驾车型                                      |
+  | licenseDate      | 驾驶证有效期                                      |
+  | licenseNumber | 驾驶证号码                                      |
+  | birth     | 出生日期                                     |
+  | idNumber     | 身份证号                                      |
+  | address     | 地址                                      |
 
