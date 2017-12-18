@@ -1,78 +1,61 @@
-## 车辆司机信息 组件
+## 判定图片 组件
 #### Usage
 定位到 components 目录下，运行：
 ```
-npm --registry=http://<服务器IP:端口> install carDriverInfo
+npm --registry=http://<服务器IP:端口> install judgeImg
 ```
 ### Example：
-默认
+默认效果
 ```
-<t-car-driver-info :data="cardriverData" ></t-car-driver-info>
-
-cardriverData: {
-    carData: {
-      carPic: 'http://www.sinaimg.cn/dy/slidenews/1_img/2017_50/88490_1557806_381226.jpg',
-      plateNumber: '桂A123456',
-      plateColor: '0',
-      alexNum: 4,
-      tyreNum: 8,
-      carType: '货5',
-      carWeight: '25(吨)',
-      loadWeight: '40(吨)'
-    },
-    driverData: {
-      driverPic: 'http://www.people.com.cn/mediafile/pic/20160226/26/1191985824992231422.jpg',
-      driverName: '王百万',
-      sex: '男',
-      drivingType: 'B2',
-      licenseDate: '2018-09-09',
-      licenseNumber: '423847293847509384',
-      birth: '1983-1-5',
-      idNumber: '45xxxxxxxxxxxxxxxx',
-      address: '广西壮族自治区南宁市高新区中盟科技园'
-    }
-  }
-
+<t-judgeimg :data="imgsData"></t-judgeimg>
+imgsData = [{
+                credible: '0.5',
+                plateNumber: '桂A123456',
+                carInPic: 'http://www.sinaimg.cn/dy/slidenews/1_img/2017_50/88490_1557806_381226.jpg',
+                carOutPic: 'http://www.sinaimg.cn/dy/slidenews/1_img/2017_50/88490_1557806_381226.jpg',
+                carInAdress: '入口收费站',
+                carOutAdress: '出口收费站',
+                carInTime: '2017-09-23 12:00:00',
+                carOutTime: '2017-09-23 19:00:00'
+              }]
 ```
 指定宽度
 ```
-<t-car-driver-info :data="cardriverData" width=750px></t-car-driver-info>
-
+<t-judgeimg :data="imgsData" wdith="500px"></t-judgeimg>
 ```
+疑似同伙
+```
+<t-judgeimg :data="imgsData" @judge="judgeEvent"></t-judgeimg>
+```
+
 
 ### Attributes
 
 | 参数 | 说明       | 类型    | 可选值     | 默认值 |
 |------|------------|---------|------------|--------|
-| data | 车辆和司机信息 | Object  | --        | --     |
+| data | 绑定的数据，长度为1时是本车图片 | Array  | --         | --     |
 | width | 宽度 | String | -- | --  |
+| autoplay | 疑似同伙时，是否自动播放 | Boolena | true/false | false  |
+
+### Events
+
+| 名称 | 说明           | 回调参数     |
+|------|----------------|--------------|
+| judge | 判定为同伙 | 当前条同伙数据 |
 
 ### 说明
 
-data.carData 车辆信息字段:
+data的类型必须为一个数组，当data.length == 1 时，为本车图片，否则为疑似同伙 
+data每一项应包含以下字段:
 
 | 字段名           | 说明                                              |
 |------------------|---------------------------------------------------|
-| carPic       | 车身图片 |
+| credible       | 相似度 |
 | plateNumber      | 车牌号码                                          |
-| plateColor       | 车牌颜色                                          |
-| alexNum        | 轴数                                      |
-| tyreNum      | 轮胎数                                      |
-| carType | 车辆类型                                      |
-| carWeight     | 车重                                      |
-| loadWeight     | 核载                                      |
-
- data.driverData 司机信息字段:
-  
-  | 字段名           | 说明                                              |
-  |------------------|---------------------------------------------------|
-  | driverPic       | 司机图片 |
-  | driverName      | 司机姓名                                          |
-  | sex       | 性别                                          |
-  | drivingType        | 准驾车型                                      |
-  | licenseDate      | 驾驶证有效期                                      |
-  | licenseNumber | 驾驶证号码                                      |
-  | birth     | 出生日期                                     |
-  | idNumber     | 身份证号                                      |
-  | address     | 地址                                      |
+| carInAdress       | 车辆进入地点                                          |
+| carInTime        | 车辆进入时间                                      |
+| carInPic      | 入口车身图                                      |
+| carOutAdress       | 车辆出去地点                                          |
+| carOutTime        | 车辆出去时间                                      |
+| carOutPic      | 出口车身图                                      |
 
