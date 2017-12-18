@@ -8,6 +8,7 @@ npm --registry=http://<服务器IP:端口> install judgeImg
 默认效果
 ```
 <t-judgeimg :data="imgsData"></t-judgeimg>
+
 imgsData = [{
                 credible: '0.5',
                 plateNumber: '桂A123456',
