@@ -5,18 +5,18 @@
 npm --registry=http://<服务器IP:端口> install plate
 ```
 ### Example：
+车牌颜色小块+车牌号码
 ```
-# 车牌颜色小块+车牌号码
 <t-plate width="14px" height="14px" plateNumber="桂A123456" plateColor="2"></t-plate>
 
 ```
+车牌号码在颜色块内部
 ```
-# 车牌号码在颜色块内部
 <t-plate width="200px" height="60px" plateNumber="桂A123456" plateColor="2" :inside="true"></t-plate>
 
 ```
+无车牌号码
 ```
-# 无车牌号码
 <t-plate width="20px" height="20px" plateColor="2"></t-plate>
 
 ```
@@ -34,3 +34,4 @@ npm --registry=http://<服务器IP:端口> install plate
 ### 说明
 
 > 车牌颜色块都有1px的边框，设定width和height时请注意减去边框
+
